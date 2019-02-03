@@ -2,11 +2,10 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-list_ = ['1','2','3','4','5','6','7','8','9','10']
-#thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548423773/"
-#thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548534491/"
-#thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548408762/"
-thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1534686172/"
+from fetch import list_
+from url_ import thread_url
+#list_ = ['1','2','3','4','5','6','7','8','9','10']
+
 res = requests.get(thread_url)
 soup = BeautifulSoup(res.text, 'lxml')
 thread_title = soup.title.get_text()
@@ -56,7 +55,7 @@ def comment_extract(num): #num은 '1'같은 숫자 스트링 #캡쳐한것:작�
 
 import json
 def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_anchor): #위에선 comment_num을 걍 num이라고해버림...
-    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_text": comment_text, "comment_anchor": comment_anchor}
+    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_text": comment_text, "comment_text_kr": ""}
 def thread_jsonify(thread_url, thread_title, thread_opId, comments):
     return {"thread_url": thread_url, "thread_title": thread_title, "thread_opId": thread_opId, "comments": comments}
 def comments_jsonify(list_): #soup를 파라미터로 넣을까...#soup를뺐는데, 그럼 list_도 파라미터에넣을필요가없잖아...?
@@ -84,5 +83,3 @@ relative_path = "jsons"
 save_path = (Path(__file__).parent / relative_path).resolve()
 
 save_completed(list_)
-
-
