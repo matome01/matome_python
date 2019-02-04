@@ -1,10 +1,13 @@
+##할일: class="thread"로 추려도 될꺼같은데 왜 병신같이 script제거 등 개짓을했지?
+##아 제거하건 하무소쿠 등 마토메였지...그렇긴하지만 여전히 class="thread"로 거르지 않은 이유?
+##사실 거를이유가없지않나..? open2ch가 구조가 더러운것도아니고..?
+
 import requests
 import re
 from bs4 import BeautifulSoup
 
 from fetch import list_
 from url_ import thread_url
-#list_ = ['1','2','3','4','5','6','7','8','9','10']
 
 res = requests.get(thread_url)
 soup = BeautifulSoup(res.text, 'lxml')

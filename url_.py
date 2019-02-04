@@ -22,4 +22,6 @@ url = "http://hamusoku.com/archives/9986806.html"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1534686172/"
 
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1547992128/"
-thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1548750328/"
+#thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1548750328/"
+
+thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1548911167/"
