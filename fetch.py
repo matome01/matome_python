@@ -27,13 +27,17 @@ list_ = [i[0] for i in regex2]
 if len(regex2) == len(list_):
     print(f'2019/01/01\t281:\t18:03:58\tID:\n{len(regex)}\t{len(regex2)}\t{len(regex3)}\t{len(regex4)}')
 print(list_)
-trim = input("list를 trim하시겠습니까? (두번째 1: 이후 삭제): ") #마토메사이트댓글 거르기
+trim = input("list를 자동으로 trim하시겠습니까? (두번째 1: 이후 삭제): ") #마토메사이트댓글 거르기
 if trim in ["Y", "y"]:
     #indexes = [i for i, x in enumerate(list_) if x == '1'] ##<--처음이 ['2','3',....,'1',...]이렇게 2부터 시작하는경우엔 에러생겨서 이걸 쓸수없다
     #list_ = list_[0:indexes[1]]
     index = list_[3:].index("1") #위의 문제를 수정한 버전 3:은 그냥 임의로 넣은숫자. 인덱스3이후에 1이오는걸 거른다.
     list_ = list_[0:index+3] #+3해줘야함 위에 3:이니까
     print(f'trimmed list:\n{list_}')       
+        
+trim2 = input("list를 한번 더 수동으로 trim하시겠습니까? : ") #수동 리스트작성
+if trim2 in ["Y", "y"]:
+    list_ = eval(input("list_ = ")) #eval은 매우위험
 
 #For debug purpose:
 if 0:
