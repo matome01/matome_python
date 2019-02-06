@@ -5,10 +5,10 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+from papago_translation import papago
 
 from fetch import list_
 from url_ import thread_url
-from papago_translation import papago
 
 res = requests.get(thread_url)
 soup = BeautifulSoup(res.text, 'lxml')

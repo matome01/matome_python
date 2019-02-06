@@ -5,10 +5,11 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+from papago_translation import papago
 
 from fetch import list_
 from url_ import thread_url
-from papago_translation import papago
+
 #list_ = ['1','2','3','4','5','6','7','8','9','10']
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1548911167/"
 
@@ -33,7 +34,7 @@ def comment_extract(num):
     comment_authorId_before = re.search(r'(ID:)\s?(.*net)', comment_header_text) #어쩌면 net으로 안끝날수도..
     comment_authorId = comment_authorId_before.group(2)
     
-    comment_anchor = re.findall(r'>>\d*', comment_text)
+    comment_anchor = re.findall(r'>>\d*', comment_text) #\d+로하는게나을까?
 
     global thread_opId
     #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
