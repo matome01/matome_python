@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 from fetch import list_
 from url_ import thread_url
+from papago_translation import papago
 
 res = requests.get(thread_url)
 soup = BeautifulSoup(res.text, 'lxml')
@@ -51,7 +52,6 @@ def comment_extract(num): #num은 '1'같은 숫자 스트링 #캡쳐한것:작�
     #print(type(comment_datetime), type(comment_authorId), type(comment_text), type(comment_anchor))
     
     #ja -> ko translation
-    from papago_translation import papago
     comment_text_kr = papago(comment_text)
     return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor,
 
@@ -64,7 +64,8 @@ import json
 def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor): #위에선 comment_num을 걍 num이라고해버림...
     return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_text": comment_text, "comment_text_kr": comment_text_kr}
 def thread_jsonify(thread_url, thread_title, thread_opId, comments):
-    return {"thread_url": thread_url, "thread_title": thread_title, "thread_opId": thread_opId, "comments": comments}
+    thread_title_kr = papago(thread_title)
+    return {"thread_url": thread_url, "thread_title": thread_title, "thread_title_kr": thread_title_kr,"thread_opId": thread_opId, "comments": comments}
 def comments_jsonify(list_): #soup를 파라미터로 넣을까...#soup를뺐는데, 그럼 list_도 파라미터에넣을필요가없잖아...?
     i = []
     for _ in list_:

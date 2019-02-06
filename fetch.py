@@ -5,6 +5,8 @@ from url_ import url
 print(f'url: {url}')
 res = requests.get(url)
 soup = BeautifulSoup(res.text, 'lxml') #res.content? #type(res.text) == String
+print(soup.title.get_text())
+#soup = soup.body #이거 새로넣었는데 괜찮을까?? body만 취득하게끔...걍버리자..아래 이미 body를넣어놔서...귀찮게됌
 #soup = BeautifulSoup(soup.prettify(), 'lxml')
 #print(soup.body.get_text())
 #print(soup.prettify())
@@ -15,7 +17,8 @@ for _ in soup.find_all("style"):
     _.decompose()
 print(f'스크립트, 스타일태그 전부 제거 완료 여부: {soup.find_all("script") == soup.find_all("style") == []}')
 regex = re.compile(r'[1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])').findall(soup.body.get_text()) #2019/01/01
-regex2 = re.compile(r'(\d{1,3})(：|:\s|\s[:：]|\s名前：)').findall(soup.body.get_text()) #281 : #\s名前는 VIPPER나오레때문에 붙였음 맨앞에 \b버림. ㅁㅇㄹ14: 이런식으로 prettify하지않았을때 인식못해버려서.
+#regex2 = re.compile(r'(\d{1,3})(：|:\s|\s[:：]|\s名前：)').findall(soup.body.get_text()) #281 : #\s名前는 VIPPER나오레때문에 붙였음 맨앞에 \b버림. ㅁㅇㄹ14: 이런식으로 prettify하지않았을때 인식못해버려서.
+regex2 = re.compile(r'(\d{1,3})(：|:\D|\s[:：]|\s名前：)').findall(soup.body.get_text()) #새로 만들어봤는데 어떨까? 테스트
 regex3 = re.compile(r'(([0-1][0-9])|([2][0-3])):([0-5][0-9]):([0-5][0-9])').findall(soup.body.get_text()) #18:03:58  <--할일: 첫매치가 두번쨰매치보다 미래의시간인경우 없애기 or script태그 없애고 시작하기 등 <-스크립트테그없앰
 regex4 = re.compile(r'ID\s?[:：](ID)?').findall(soup.body.get_text()) #ID: #(ID)?는 ID:ID어쩌고라고 나와서 2번카운트되는경우가있어서 이렇게바꿈
 #for i in regex:

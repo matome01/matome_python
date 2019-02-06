@@ -15,7 +15,7 @@
 
 #url = "http://hamusoku.com/archives/9980283.html"
 #url = "http://hamusoku.com/archives/9986806.html"
-url = "http://blog.livedoor.jp/news23vip/archives/5451272.html"
+#url = "http://blog.livedoor.jp/news23vip/archives/5451272.html" 칸나
 
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548423773/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548534491/"
@@ -26,4 +26,10 @@ url = "http://blog.livedoor.jp/news23vip/archives/5451272.html"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1548750328/" #street children
 
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1548911167/"
-thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1549163037/" #칸나
+#thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1549163037/" #칸나
+
+url = "http://blog.livedoor.jp/itsoku/archives/54840138.html" #일본스마트폰
+thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1549240065/" #일본스마트폰
+
+url = "http://world-fusigi.net/archives/9327338.html" #철학 명언
+thread_url = "http://viper.2ch.sc/test/read.cgi/news4vip/1549213500/" #철학 명언

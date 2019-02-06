@@ -28,3 +28,5 @@ def papago(jp_text):
 
 if __name__ == '__main__':
     papago("俺は悪魔だ")
+
+    #텍스트하나하나를 하지말고 걍 list of stirngs로 해서 한번만 requeset보낼까
