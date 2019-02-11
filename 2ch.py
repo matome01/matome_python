@@ -7,8 +7,8 @@ import re
 from bs4 import BeautifulSoup
 from papago_translation import papago
 
-from fetch import list_
-from url_ import thread_url
+from fetch import list_, thread_url
+#from url_ import thread_url
 
 #list_ = ['1','2','3','4','5','6','7','8','9','10']
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1548911167/"
@@ -55,6 +55,7 @@ def comments_jsonify(list_): #soup를 파라미터로 넣을까...#soup를뺐는
         i.append(comment_jsonify(*comment_extract(_)))
     global thread_opId
     thread_opId = list(thread_opId) #set은 JSON파일에 부적합 #global선언하는거 좋지않은거같다. 코드 수정하자?
+    thread_opId.append(comment_extract(list_[0])[2])
     return i
 def completed(list_):
     comments = comments_jsonify(list_)

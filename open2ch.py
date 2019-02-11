@@ -7,8 +7,8 @@ import re
 from bs4 import BeautifulSoup
 from papago_translation import papago
 
-from fetch import list_
-from url_ import thread_url
+from fetch import list_, thread_url
+#from url_ import thread_url
 
 res = requests.get(thread_url)
 soup = BeautifulSoup(res.text, 'lxml')
