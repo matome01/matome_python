@@ -14,7 +14,7 @@ if site in ['open2ch.net']:
 
 ##위에서 fetch하고 import_module안에서 한번 더 fetch를 import하는데 한번만 실행되네...즉 같은모듈을 import 두번해도 한번만 실행하는듯..?
 
-with open('./jsons/' + datetime.datetime.today().strftime("%Y%m%d") + '.json', 'r') as f:
+with open('./jsons/' + datetime.datetime.today().strftime("%Y%m%d") + '.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
     for i in data['comments']:
         for j in i['comment_media']:

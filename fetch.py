@@ -78,6 +78,6 @@ if 0:
 if 0:
     print(soup.body.get_text())
 
-continue_ = input("fetch.py 실행완료. 계속 진행하시겠습니까? y/n: ")
+continue_ = input("fetch.py 실행완료. 계속 진행하시겠습니까? : ")
 if continue_ in ["n", "N"]:
     raise SystemExit(0)

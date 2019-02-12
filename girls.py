@@ -28,7 +28,9 @@ def comment_extract(num, soup):
     plus = updownbox.find("div", class_="icon-rate-wrap-plus").p.get_text()
     minus = updownbox.find("div", class_="icon-rate-wrap-minus").p.get_text()
     #미디어
-    media = re.findall(r'http.*(jpg|jpeg|png|mp4|gif)', text_jp) #나중에 확장자 더 필요하면 추가하기
+    media = []
+    for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', text_jp, re.I):#나중에 확장자 더 필요하면 추가하기
+        media.append(i.group(0))
     return num, datetime, text_jp, text_kr, anchor, plus, minus, media,
 
 ####아래는 다른것들과 거의 비슷#####

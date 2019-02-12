@@ -39,7 +39,9 @@ def comment_extract(num):
     global thread_opId
     #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
     
-    comment_media = re.findall(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text) #나중에 확장자 더 필요하면 추가하기
+    comment_media = []
+    for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        comment_media.append(i.group(0))
     
     comment_text_kr = papago(comment_text)
     return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media,

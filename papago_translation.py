@@ -10,8 +10,8 @@ def papago(jp_text):
     client_secret = "80ijFS0PqF" # 개발자센터에서 발급받은 Client Secret 값
     encText = urllib.parse.quote(jp_text)
     data = "source=ja&target=ko&text=" + encText
-    url = "https://openapi.naver.com/v1/papago/n2mt" # <-NMT번역
-    #url = "https://openapi.naver.com/v1/language/translate"# <-SMT번역
+    #url = "https://openapi.naver.com/v1/papago/n2mt" # <-NMT번역
+    url = "https://openapi.naver.com/v1/language/translate"# <-SMT번역
     request = urllib.request.Request(url)
     request.add_header("X-Naver-Client-Id",client_id)
     request.add_header("X-Naver-Client-Secret",client_secret)

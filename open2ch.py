@@ -50,7 +50,9 @@ def comment_extract(num): #num은 '1'같은 숫자 스트링 #캡쳐한것:작�
     
     #print(comment_datetime, comment_authorId, comment_text, comment_anchor) #<-이것들을 추출했으니 여기서 골라쓰시오. #추가할것:트위터, 사진, 유투브 <-유투브는 링크가아래나오니까상관없나?
     #print(type(comment_datetime), type(comment_authorId), type(comment_text), type(comment_anchor))
-    comment_media = re.findall(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text) #나중에 확장자 더 필요하면 추가하기
+    comment_media = []
+    for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        comment_media.append(i.group(0))
     #ja -> ko translation
     comment_text_kr = papago(comment_text)
     return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media,

@@ -40,7 +40,7 @@
 #url = "http://michaelsan.livedoor.biz/archives/51968891.html" #히카킨
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1549554711" #히카킨
 
-url = "http://bipblog.com/archives/5619368.html" #여자이상형월수입
+#url = "http://bipblog.com/archives/5619368.html" #여자이상형월수입
 #thread_url = "http://viper.2ch.sc/test/read.cgi/news4vip/1549632121/" #여자이상형월수입
 
 #url = "http://matometanews.com/archives/1927782.html" #박원순렉서스
@@ -52,3 +52,5 @@ url = "http://bipblog.com/archives/5619368.html" #여자이상형월수입
 #url = "http://matometanews.com/archives/1927971.html"
 #url = "http://workingnews.blog117.fc2.com/blog-entry-12384.html"
 #url = "http://hamusoku.com/archives/9992689.html"
+
+url = "http://matometanews.com/archives/1927971.html"
