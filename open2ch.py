@@ -50,10 +50,10 @@ def comment_extract(num): #num은 '1'같은 숫자 스트링 #캡쳐한것:작�
     
     #print(comment_datetime, comment_authorId, comment_text, comment_anchor) #<-이것들을 추출했으니 여기서 골라쓰시오. #추가할것:트위터, 사진, 유투브 <-유투브는 링크가아래나오니까상관없나?
     #print(type(comment_datetime), type(comment_authorId), type(comment_text), type(comment_anchor))
-    
+    comment_media = re.findall(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text) #나중에 확장자 더 필요하면 추가하기
     #ja -> ko translation
     comment_text_kr = papago(comment_text)
-    return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor,
+    return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media,
 
 
 
@@ -61,8 +61,8 @@ def comment_extract(num): #num은 '1'같은 숫자 스트링 #캡쳐한것:작�
 #    comment_extract(str(i))
 
 import json
-def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor): #위에선 comment_num을 걍 num이라고해버림...
-    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_text": comment_text, "comment_text_kr": comment_text_kr}
+def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media): #위에선 comment_num을 걍 num이라고해버림...
+    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_media": comment_media, "comment_text": comment_text, "comment_text_kr": comment_text_kr}
 def thread_jsonify(thread_url, thread_title, thread_opId, comments):
     thread_title_kr = papago(thread_title)
     return {"thread_url": thread_url, "thread_title": thread_title, "thread_title_kr": thread_title_kr,"thread_opId": thread_opId, "comments": comments}
@@ -82,7 +82,9 @@ def get_valid_filename(s):
     return re.sub(r'[\\/*?:"<>|]', '-', s)
 
 def save_completed(list_):
-    with open(f'{save_path}/{get_valid_filename(thread_title)}.json', 'w', encoding="utf-8") as f: #파일명.json으로하면 파일명에 들어가면안되는 문자가 들어갈수도있지않나...
+    #with open(f'{save_path}/{get_valid_filename(thread_title)}.json', 'w', encoding="utf-8") as f: #파일명.json으로하면 파일명에 들어가면안되는 문자가 들어갈수도있지않나...
+    import datetime
+    with open(f'{save_path}/{datetime.datetime.today().strftime("%Y%m%d")}.json', 'w', encoding="utf-8") as f:#위에꺼는 json파일명이 일본어합쳐져서 나오는버전이고, 걍 이거 싫어서 이제는 날짜.json으로 할꺼..그게 이거
         json.dump(completed(list_), f, ensure_ascii=False, indent=2)
 
 #저장경로 configuration

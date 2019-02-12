@@ -39,13 +39,15 @@ def comment_extract(num):
     global thread_opId
     #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
     
+    comment_media = re.findall(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text) #나중에 확장자 더 필요하면 추가하기
+    
     comment_text_kr = papago(comment_text)
-    return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor,
+    return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media,
 
 #이하 open2ch.py와 같음
 import json
-def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor): #위에선 comment_num을 걍 num이라고해버림...
-    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_text": comment_text, "comment_text_kr": comment_text_kr}
+def comment_jsonify(comment_num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media): #위에선 comment_num을 걍 num이라고해버림...
+    return {"comment_num": comment_num, "comment_datetime": comment_datetime, "comment_authorId": comment_authorId, "comment_anchor": comment_anchor, "comment_media": comment_media, "comment_text": comment_text, "comment_text_kr": comment_text_kr}
 def thread_jsonify(thread_url, thread_title, thread_opId, comments):
     thread_title_kr = papago(thread_title)
     return {"thread_url": thread_url, "thread_title": thread_title, "thread_title_kr": thread_title_kr, "thread_opId": thread_opId, "comments": comments}
@@ -55,7 +57,7 @@ def comments_jsonify(list_): #soup를 파라미터로 넣을까...#soup를뺐는
         i.append(comment_jsonify(*comment_extract(_)))
     global thread_opId
     thread_opId = list(thread_opId) #set은 JSON파일에 부적합 #global선언하는거 좋지않은거같다. 코드 수정하자?
-    thread_opId.append(comment_extract(list_[0])[2])
+    thread_opId.append(comment_extract(list_[0])[2]) #걍 처음에나오는애를 opId로 넣음
     return i
 def completed(list_):
     comments = comments_jsonify(list_)
@@ -66,7 +68,9 @@ def get_valid_filename(s):
     return re.sub(r'[\\/*?:"<>|]', '-', s)
 
 def save_completed(list_):
-    with open(f'{save_path}/{get_valid_filename(thread_title)}.json', 'w', encoding="utf-8") as f: #파일명.json으로하면 파일명에 들어가면안되는 문자가 들어갈수도있지않나...
+    #with open(f'{save_path}/{get_valid_filename(thread_title)}.json', 'w', encoding="utf-8") as f: #파일명.json으로하면 파일명에 들어가면안되는 문자가 들어갈수도있지않나...
+    import datetime
+    with open(f'{save_path}/{datetime.datetime.today().strftime("%Y%m%d")}.json', 'w', encoding="utf-8") as f:#위에꺼는 json파일명이 일본어합쳐져서 나오는버전이고, 걍 이거 싫어서 이제는 날짜.json으로 할꺼..그게 이거
         json.dump(completed(list_), f, ensure_ascii=False, indent=2)
 
 #저장경로 configuration

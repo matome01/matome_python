@@ -27,6 +27,6 @@ def papago(jp_text):
         return "Error Code:" + rescode
 
 if __name__ == '__main__':
-    papago("俺は悪魔だ")
+    print(papago("俺は悪魔だ<br/>しばらくお待ちください<br>おにぎり"))
 
-    #텍스트하나하나를 하지말고 걍 list of stirngs로 해서 한번만 requeset보낼까
+#텍스트하나하나를 하지말고 걍 list of stirngs로 해서 한번만 requeset보낼까
