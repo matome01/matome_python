@@ -12,45 +12,35 @@
 #url = "http://himasoku.com/archives/52063383.html" #히마진
 #url = "http://burusoku-vip.com/archives/1902784.html" #부루소쿠
 #url = "http://blog.livedoor.jp/nwknews/archives/5448635.html" #철학뉴스
-
 #url = "http://hamusoku.com/archives/9980283.html"
 #url = "http://hamusoku.com/archives/9986806.html"
 #url = "http://blog.livedoor.jp/news23vip/archives/5451272.html" 칸나
-
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548423773/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548534491/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1548408762/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1534686172/"
-
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1547992128/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/news4vip/1548750328/" #street children
-
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1548911167/"
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1549163037/" #칸나
-
 #url = "http://blog.livedoor.jp/itsoku/archives/54840138.html" #일본스마트폰
 #thread_url = "https://hayabusa.open2ch.net/test/read.cgi/livejupiter/1549240065/" #일본스마트폰
-
 #url = "http://world-fusigi.net/archives/9327338.html" #철학 명언
 #thread_url = "http://viper.2ch.sc/test/read.cgi/news4vip/1549213500/" #철학 명언
-
 #url = "http://news.2chblog.jp/archives/51947914.html" #아리아나그란데
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1549502770" #아리아나그란데
-
 #url = "http://michaelsan.livedoor.biz/archives/51968891.html" #히카킨
 #thread_url = "http://tomcat.2ch.sc/test/read.cgi/livejupiter/1549554711" #히카킨
-
 #url = "http://bipblog.com/archives/5619368.html" #여자이상형월수입
 #thread_url = "http://viper.2ch.sc/test/read.cgi/news4vip/1549632121/" #여자이상형월수입
-
 #url = "http://matometanews.com/archives/1927782.html" #박원순렉서스
 #thread_url = "http://hayabusa3.2ch.sc/test/read.cgi/news/1549750184/" #박원순렉서스
-
 #url = "http://matometanews.com/archives/1927910.html"
 #thread_url = "http://ai.2ch.sc/test/read.cgi/newsplus/1549851214/"
-
 #url = "http://matometanews.com/archives/1927971.html"
 #url = "http://workingnews.blog117.fc2.com/blog-entry-12384.html"
 #url = "http://hamusoku.com/archives/9992689.html"
-
-url = "http://matometanews.com/archives/1927971.html"
+#url = "http://matometanews.com/archives/1927971.html"
+#url = "http://blog.livedoor.jp/dqnplus/archives/1987465.html"
+#url = 'http://koumuin-matome.blog.jp/archives/78357987.html' #아베가라케
+thread_url = "http://ai.2ch.sc/test/read.cgi/newsplus/1549957982/"

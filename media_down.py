@@ -1,9 +1,7 @@
 import requests
 import datetime
 import pathlib
-
 #url = "https://i.imgur.com/cYpit4p.jpg"
-
 def down(url, filename=None):
     if filename is None:
         filename = './images/' + datetime.datetime.today().strftime('%Y%m%d/') + url.split("/")[-1]

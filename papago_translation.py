@@ -1,5 +1,3 @@
-import os
-import sys
 import urllib.request
 import json
 
@@ -10,8 +8,8 @@ def papago(jp_text):
     client_secret = "80ijFS0PqF" # 개발자센터에서 발급받은 Client Secret 값
     encText = urllib.parse.quote(jp_text)
     data = "source=ja&target=ko&text=" + encText
-    #url = "https://openapi.naver.com/v1/papago/n2mt" # <-NMT번역
-    url = "https://openapi.naver.com/v1/language/translate"# <-SMT번역
+    url = "https://openapi.naver.com/v1/papago/n2mt" # <-NMT번역
+    #url = "https://openapi.naver.com/v1/language/translate"# <-SMT번역
     request = urllib.request.Request(url)
     request.add_header("X-Naver-Client-Id",client_id)
     request.add_header("X-Naver-Client-Secret",client_secret)
@@ -28,5 +26,4 @@ def papago(jp_text):
 
 if __name__ == '__main__':
     print(papago("俺は悪魔だ<br/>しばらくお待ちください<br>おにぎり"))
-
 #텍스트하나하나를 하지말고 걍 list of stirngs로 해서 한번만 requeset보낼까
