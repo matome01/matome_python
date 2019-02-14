@@ -6,6 +6,8 @@ import url_
 #할일: girlschannel 추가하기
 try:
     thread_url, list_ = url_.thread_url, url_.list_
+    if thread_url.find("2ch.sc") != -1 and thread_url.find("poverty") != -1:
+        raise Exception("嫌儲스레입니다. 작업을 종료합니다...")
 except AttributeError:
     try:
         url = url_.url

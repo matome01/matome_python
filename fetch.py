@@ -23,6 +23,8 @@ def execute(url):
             break
     thread_url = re.sub(r'://.*.5ch.net', r'://2ch.sc', thread_url)
     print(thread_url)
+    if site in ['2ch.sc', '5ch.net'] and thread_url.find("poverty") != -1:
+        raise Exception("嫌儲스레입니다. 작업을 종료합니다...")
 
     regex = re.compile(r'[1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])').findall(soup.body.get_text()) #2019/01/01
     #regex2 = re.compile(r'(\d{1,3})(：|:\s|\s[:：]|\s名前：)').findall(soup.body.get_text()) #281 : #\s名前는 VIPPER나오레때문에 붙였음 맨앞에 \b버림. ㅁㅇㄹ14: 이런식으로 prettify하지않았을때 인식못해버려서.
