@@ -51,5 +51,6 @@ def execute(url):
     trim2 = input("list를 한번 더 수동으로 trim하시겠습니까?: ") #수동 리스트작성
     if trim2 in ["Y", "y"]:
         list_ = eval(input("list_ = ")) #eval은 매우위험
+        list_ = list(map(str, list_))
 
     return thread_url, list_,
