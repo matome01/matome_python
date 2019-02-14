@@ -44,7 +44,7 @@ def execute(thread_url, list_):
         for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
             comment_media.append(i.group(0))
         comment_text_kr = papago(comment_text)
-        return num, comment_datetime, comment_authorId, comment_text, comment_text_kr, comment_anchor, comment_media,
+        return num, comment_datetime, comment_authorId, comment_anchor, comment_media, comment_text, comment_text_kr,
 
     def comment_list(list_): #soup를 파라미터로 넣을까...#soup를뺐는데, 그럼 list_도 파라미터에넣을필요가없잖아...?
         i = []

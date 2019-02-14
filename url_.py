@@ -44,3 +44,4 @@
 #url = "http://blog.livedoor.jp/dqnplus/archives/1987465.html"
 #url = 'http://koumuin-matome.blog.jp/archives/78357987.html' #아베가라케
 thread_url = "http://ai.2ch.sc/test/read.cgi/newsplus/1549957982/"
+list_ = ['2','3','4','5','6']
