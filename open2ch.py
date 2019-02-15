@@ -22,7 +22,7 @@ def execute(thread_url, list_):
         #author가공
         comment_header = soup.find("dt", { "res" : num }) #dt캡쳐완료
         comment_datetime = comment_header.find(string=re.compile(r'[1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])'))
-        comment_datetime = comment_datetime[1:-1] #위의 comment_datime은 ': 2018/10/07(日)23:02:37 '의형식. 이걸 가공
+        comment_datetime = comment_datetime[1:-1] #위의 comment_datime은 '：2019/01/29(火)17:40:50 '의형식. 이걸 가공
         #comment_authorId = comment_header.find(class_="id").get_text() #<-옵션1. 맨윗놈글쓴놈은 ID:라는게 앞에 붙어버림
         comment_authorId = comment_header.find(class_="_id").get("val") #<-옵션2. 이걸로할까? 위에완다르게 이건 맨윗글도 ID:라는거 안붙는데...
         ##author가공->스레주id가공
@@ -41,7 +41,7 @@ def execute(thread_url, list_):
         #print(comment_datetime, comment_authorId, comment_text, comment_anchor) #<-이것들을 추출했으니 여기서 골라쓰시오. #추가할것:트위터, 사진, 유투브 <-유투브는 링크가아래나오니까상관없나?
         #print(type(comment_datetime), type(comment_authorId), type(comment_text), type(comment_anchor))
         comment_media = []
-        for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        for i in re.finditer(r'h?ttp.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
             comment_media.append(i.group(0))
         comment_text_kr = papago(comment_text)
         return num, comment_datetime, comment_authorId, comment_anchor, comment_media, comment_text, comment_text_kr,

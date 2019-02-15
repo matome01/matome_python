@@ -19,17 +19,13 @@ def execute(thread_url, list_):
         
         comment_header_text = comment_header.get_text("\n", strip=True)
         comment_text = comment_content.get_text("\n", strip=True)
-
-        comment_datetime_before = re.search(r'([1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1]).*) ID:', comment_header_text)
-        comment_datetime = comment_datetime_before.group(1)
-
-        comment_authorId_before = re.search(r'(ID:)\s?(.*net)', comment_header_text) #어쩌면 net으로 안끝날수도..
-        comment_authorId = comment_authorId_before.group(2)
         
-        comment_anchor = re.findall(r'>>\d*', comment_text) #\d+로하는게나을까?
+        comment_datetime = re.search(r'([1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1]).*\d)\s\S+net', comment_header_text).group(1)        
+        comment_authorId = re.search(r'\s(ID:)?(\S*\.net)', comment_header_text).group(2) #어쩌면 net으로 안끝날수도..
+        comment_anchor = re.findall(r'>>\d+', comment_text)
         #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
         comment_media = []
-        for i in re.finditer(r'http.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        for i in re.finditer(r'h?ttp.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
             comment_media.append(i.group(0))
 
         comment_text_kr = papago(comment_text)
