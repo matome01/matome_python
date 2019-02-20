@@ -11,11 +11,13 @@ def execute(thread_url, list_):
     soup = BeautifulSoup(res.text, 'lxml')
     thread_title = soup.title.get_text()
     soup = soup.find("dl")
+    headers = soup.find_all("dt")
+    contents = soup.find_all("dd")
     thread_opId = set()
     #매치가 1개인지 확인하는건 걍 생략함 (넣고싶으면 open2ch 참조)
     def comment_extract(num):
-        comment_header = soup.select(f'dt:nth-of-type({int(num)})')[0]#찾는거 걍 num번째 dt로 해서 찾음..더 정확히는 "1  :"을 포함하는 뭐 이런식으로 찾는게 더 정확하겠지..
-        comment_content = soup.select(f'dd:nth-of-type({int(num)})')[0]
+        comment_header = headers[int(num)-1] #soup.select(f'dt:nth-of-type({int(num)})')[0] <-select는 css selector이용하는건데 이거 존나느림 (select가 느린게아니라 내 css selector가 존나느린 selector인걸수도)
+        comment_content = contents[int(num)-1] #soup.select(f'dd:nth-of-type({int(num)})')[0]
         
         comment_header_text = comment_header.get_text("\n", strip=True)
         comment_text = comment_content.get_text("\n", strip=True)
@@ -25,10 +27,11 @@ def execute(thread_url, list_):
         comment_anchor = re.findall(r'>>\d+', comment_text)
         #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
         comment_media = []
-        for i in re.finditer(r'h?ttp.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        for i in re.finditer(r'h?ttp.*\.(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
             comment_media.append(i.group(0))
 
         comment_text_kr = papago(comment_text)
+        print(f'{num} - Translation completed')
         return num, comment_datetime, comment_authorId, comment_anchor, comment_media, comment_text, comment_text_kr,
     
     def comment_list(list_): #soup를 파라미터로 넣을까...#soup를뺐는데, 그럼 list_도 파라미터에넣을필요가없잖아...?

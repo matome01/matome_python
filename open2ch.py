@@ -41,9 +41,10 @@ def execute(thread_url, list_):
         #print(comment_datetime, comment_authorId, comment_text, comment_anchor) #<-이것들을 추출했으니 여기서 골라쓰시오. #추가할것:트위터, 사진, 유투브 <-유투브는 링크가아래나오니까상관없나?
         #print(type(comment_datetime), type(comment_authorId), type(comment_text), type(comment_anchor))
         comment_media = []
-        for i in re.finditer(r'h?ttp.*(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
+        for i in re.finditer(r'h?ttp.*\.(jpg|jpeg|png|mp4|gif)', comment_text, re.I):#나중에 확장자 더 필요하면 추가하기
             comment_media.append(i.group(0))
         comment_text_kr = papago(comment_text)
+        print(f'{num} - Translation completed')
         return num, comment_datetime, comment_authorId, comment_anchor, comment_media, comment_text, comment_text_kr,
 
     def comment_list(list_): #soup를 파라미터로 넣을까...#soup를뺐는데, 그럼 list_도 파라미터에넣을필요가없잖아...?

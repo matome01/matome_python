@@ -9,7 +9,7 @@ try:
     list_ = list(map(str, list_))
     list_ = list(dict.fromkeys(list_))
     if thread_url.find("2ch.sc") != -1 and thread_url.find("poverty") != -1:
-        raise Exception("嫌儲스레입니다. 작업을 종료합니다...")
+        raise Exception("嫌儲 thread. Execution terminated...")
 except AttributeError:
     try:
         url = url_.url
@@ -17,7 +17,7 @@ except AttributeError:
         raise
     thread_url, list_ = import_module('fetch').execute(url)
     list_ = list(dict.fromkeys(list_))
-    continue_ = input("fetch.py 실행완료. 계속 진행하시겠습니까?: ")
+    continue_ = input("fetch.py successfully executed. Continue?: ")
     if continue_ in ["n", "N"]:
         raise SystemExit(0)
 

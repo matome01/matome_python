@@ -24,7 +24,7 @@ def execute(url):
     thread_url = re.sub(r'://.*.5ch.net', r'://2ch.sc', thread_url)
     print(thread_url)
     if site in ['2ch.sc', '5ch.net'] and thread_url.find("poverty") != -1:
-        raise Exception("嫌儲스레입니다. 작업을 종료합니다...")
+        raise Exception("嫌儲 thread. Execution terminated...")
 
     regex = re.compile(r'[1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])').findall(soup.body.get_text()) #2019/01/01
     #regex2 = re.compile(r'(\d{1,3})(：|:\s|\s[:：]|\s名前：)').findall(soup.body.get_text()) #281 : #\s名前는 VIPPER나오레때문에 붙였음 맨앞에 \b버림. ㅁㅇㄹ14: 이런식으로 prettify하지않았을때 인식못해버려서.
@@ -36,19 +36,17 @@ def execute(url):
     list_ = [i[0] for i in regex2]
     if len(regex2) == len(list_):
         print(f'2019/01/01\t281:\t18:03:58\tID:\n{len(regex)}\t{len(regex2)}\t{len(regex3)}\t{len(regex4)}')
-    print(list_)
-    trim = input("list를 자동으로 trim하시겠습니까?(두번째 1: 이후 삭제): ") #마토메사이트댓글 거르기
-    if trim in ["Y", "y"]:
-        #indexes = [i for i, x in enumerate(list_) if x == '1'] ##<--처음이 ['2','3',....,'1',...]이렇게 2부터 시작하는경우엔 에러생겨서 이걸 쓸수없다
-        #list_ = list_[0:indexes[1]]
-        try:
-            index = list_[3:].index("1") #위의 문제를 수정한 버전 3:은 그냥 임의로 넣은숫자. 인덱스3이후에 1이오는걸 거른다.
-            list_ = list_[0:index+3] #+3해줘야함 위에 3:이니까
-        except ValueError:
-            print("나중에 등장하는 1이 없습니다")
-        print(f'trimmed list:\n{list_}')
+    #indexes = [i for i, x in enumerate(list_) if x == '1'] ##<--처음이 ['2','3',....,'1',...]이렇게 2부터 시작하는경우엔 에러생겨서 이걸 쓸수없다
+    #list_ = list_[0:indexes[1]]
+    try:
+        index = list_[3:].index("1") #위의 문제를 수정한 버전 3:은 그냥 임의로 넣은숫자. 인덱스3이후에 1이오는걸 거른다.
+        list_ = list_[0:index+3] #+3해줘야함 위에 3:이니까
+    except ValueError:
+        print(f'List not automatically trimmed:\n{list_}')
+    else:
+        print(f'List automatically trimmed:\n{list_}')
 
-    trim2 = input("list를 한번 더 수동으로 trim하시겠습니까?: ") #수동 리스트작성
+    trim2 = input("Want manual trim?: ") #수동 리스트작성
     if trim2 in ["Y", "y"]:
         list_ = eval(input("list_ = ")) #eval은 매우위험
         list_ = list(map(str, list_))
