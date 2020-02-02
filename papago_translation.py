@@ -4,8 +4,8 @@ import json
 def papago(jp_text):
     if not jp_text:
         return ''
-    client_id = "0LXVE6HwgspFsDYf9jg0" # 개발자센터에서 발급받은 Client ID 값
-    client_secret = "80ijFS0PqF" # 개발자센터에서 발급받은 Client Secret 값
+    client_id = "bI8kfUsgHNzBMpxV_2LB" # 개발자센터에서 발급받은 Client ID 값
+    client_secret = "3ch_DoulJb" # 개발자센터에서 발급받은 Client Secret 값
     encText = urllib.parse.quote(jp_text)
     data = "source=ja&target=ko&text=" + encText
     url = "https://openapi.naver.com/v1/papago/n2mt" # <-NMT번역

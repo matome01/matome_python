@@ -22,7 +22,7 @@ def execute(thread_url, list_):
         comment_header_text = comment_header.get_text("\n", strip=True)
         comment_text = comment_content.get_text("\n", strip=True)
         
-        comment_datetime = re.search(r'([1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1]).*\d)\s(ID)', comment_header_text).group(1)        
+        comment_datetime = re.search(r'([1-2]\d{3}(\/)(((0)[1-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1]).*\d)\s+(ID)', comment_header_text).group(1)        
         comment_authorId = re.search(r'\s(ID:)(\S*)', comment_header_text).group(2)
         comment_anchor = re.findall(r'>>\d+', comment_text)
         #thread_opId.add() #<-2ch.sc에서 스레주인지 알수있는 방법이 아직까진 난 모른다..나중에 추가하던가하자
